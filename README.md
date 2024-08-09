@@ -111,5 +111,16 @@ Execute the command by clicking the "Execute" button (lightning bolt icon) in th
 ![image-20240721-200727](https://github.com/user-attachments/assets/a5b340bb-1f96-43d9-a066-791db2b811d4)
 
 
+**6.** Perform the Migration
 
-  
+  Export the Data from the Source Database:
+- In MySQL Workbench, go to the source database.
+- Use the "Data Export" option on the left pane to export the ‘source_db’ ‘schema’ and data.
+- Select the ‘source_db’ schema.
+- Choose ‘Dump Structure and Data’.
+- Choose the path where you want your data to be exported,
+- Click "Start Export" and save the .sql file.
+
+![image-20240721-201321](https://github.com/user-attachments/assets/bbe53c2b-1edf-4c62-8a47-f7cd50db38e3)
+![image-20240721-201119](https://github.com/user-attachments/assets/7ff7a224-05c7-45ed-ba31-4411babb26ef)
+
