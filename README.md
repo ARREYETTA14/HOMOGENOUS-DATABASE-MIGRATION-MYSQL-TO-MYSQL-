@@ -43,3 +43,73 @@ This project involves migrating a MySQL database within the same AWS region and 
 -  Leave the rest as default then create the Source Database.
 
 **3.** Create the Target Database:
+
+- A similar procedure as the above just needs to pass the right “Security group”. 
+
+**4.** Connect to the Source Database, create a Table and insert data.
+
+- Launch MySQL Workbench on your computer.
+
+![image-20240721-195028](https://github.com/user-attachments/assets/6e104a83-b576-48fd-a4bf-556d934354cc)
+
+-Clicking the "+" button to create a new connection, enter the necessary connection details (hostname, port, username, password, etc.), and then click "Test Connection" to ensure it's working. Once done, click  "OK" to save and open the connection.
+
+**Hostname:** Pass database endpoint
+**Username:** Pass Master Username
+**Connection Name:** Any name of your choice
+
+![image-20240721-195310](https://github.com/user-attachments/assets/4a9e2746-2255-4d5c-8fae-ecaa40d4802f)
+
+- Click on Connection Made to access “Source database
+
+![image-20240721-195420](https://github.com/user-attachments/assets/757bb291-d056-44da-9453-2952e2bcd57f)
+
+-In the new SQL query tab, enter the following SQL command to create the source_db database:
+  ```sh
+  CREATE DATABASE source_db;
+  ```
+Execute the command by clicking the "Execute" button (lightning bolt icon) in the toolbar or by pressing Ctrl+Enter (Windows/Linux) or Cmd+Enter (Mac). You will get a green tick at the bottom showing it has been created.
+
+![image-20240721-195819](https://github.com/user-attachments/assets/e0af2adc-344e-4bb6-a289-4812395b6934)
+
+- Now, enter the following SQL command to create the ‘employees’ table:
+  ```sh
+    CREATE TABLE employees (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(50),
+      position VARCHAR(50),
+      salary DECIMAL(10, 2)
+  );
+  ```
+- Finally, insert some sample data into the ‘employees’ table with the following SQL command:
+  ```sh
+  INSERT INTO employees (name, position, salary) VALUES
+  ('Alice Johnson', 'Manager', 75000.00),
+  ('Bob Smith', 'Developer', 60000.00),
+  ('Charlie Brown', 'Designer', 55000.00);
+  ```
+- To ensure that the data has been inserted correctly, run a **‘SELECT’** query:
+  ```sh
+  SELECT * FROM employees;
+  ```
+![image-20240721-200352](https://github.com/user-attachments/assets/1b01a025-0935-4c95-8a8b-145c2969712f)
+
+**5.** Connect to the Target Database via the MySQL workbench just as it was done for the Source Database.
+
+- Run the following SQL commands to create the destination database and a similar table structure(schema) as in the Source Database:
+  ```sh
+  CREATE DATABASE destination_db;
+  USE destination_db;
+  
+  CREATE TABLE employees (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(50),
+      position VARCHAR(50),
+      salary DECIMAL(10, 2)
+  );
+  ```
+![image-20240721-200727](https://github.com/user-attachments/assets/a5b340bb-1f96-43d9-a066-791db2b811d4)
+
+
+
+  
