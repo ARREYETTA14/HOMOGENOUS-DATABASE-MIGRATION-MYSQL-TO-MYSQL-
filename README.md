@@ -124,3 +124,19 @@ Execute the command by clicking the "Execute" button (lightning bolt icon) in th
 ![image-20240721-201321](https://github.com/user-attachments/assets/bbe53c2b-1edf-4c62-8a47-f7cd50db38e3)
 ![image-20240721-201119](https://github.com/user-attachments/assets/7ff7a224-05c7-45ed-ba31-4411babb26ef)
 
+**7.** Verify the Migration
+- Connect to the destination MySQL database using MySQL Workbench. 
+- Run the following query to verify the data:
+  ```SH
+  USE destination_db;
+  SELECT * FROM employees;
+  ```
+**Note**
+If you encounter the error *ERROR 1227 (42000): Access denied; you need (at least one of) the SUPER, SYSTEM_VARIABLES_ADMIN or SESSION_VARIABLES_ADMIN privilege(s) for this operation*, it indicates that the user account does not have the necessary privileges to execute certain commands in the SQL script.
+
+This is a common issue when importing SQL dumps that contain commands requiring higher privileges, such as setting global variables or using certain administrative commands.
+To resolve this:
+
+1. Edit the exported **.sql file**.
+2. Comment out privileged commands like **SET GLOBAL** and **SET SESSION** by prefixing them with **--**.
+3. Retry the import process.
